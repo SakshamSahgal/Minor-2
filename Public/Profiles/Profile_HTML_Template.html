@@ -1,0 +1,60 @@
+<html>
+   
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- For Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Static_profile.css">
+    <link rel="stylesheet" href="../CSS/Common_CSS.css">
+    <title>USER PROFILE</title>
+</head>
+<body>
+  
+  <div id="links_holder">
+    <a href="../Dashboard.html">Dashboard</a>
+    <a href="../users.html">Users</a>
+    <a href="#" onclick="Logout();return false;">Logout</a>
+    <a href="../Profiles.html">  <img src="../GUI_Resources/No_photo.gif" alt="" id="profile_picture" height="60" class="rounded-circle shadow-4-strong"> </a>           
+  </div>
+
+    <div id="Load_overlay" hidden>
+        <img src="../GUI_Resources/loading.gif" id="loading_img">
+    </div>  
+    <br><br>
+    <div class="container py-5">
+      <div class="row g-1" >
+        <div class="col-12 border bg-light" style="--bs-bg-opacity: .6;">
+          <div class="p-2" align="center"><img width="200" src="" id="Profile_Photo" class="rounded-circle shadow-4-strong"/></div>
+        </div>
+      </div>
+      
+      <div class="row g-1" >
+        <div class="col-12 border bg-light" style="--bs-bg-opacity: .6;">
+          <div class="p-2" align="center"><span>Currently : </span>  <b><span id="Activity_Status"> - </span>  </b> </div>
+        </div>
+      </div>
+
+      <div class="row g-1" >
+        <div class="col-12 border bg-light" style="--bs-bg-opacity: .6;">
+          <div class="p-2" align="center"><span id="Username"></span></div>
+        </div>
+      </div>
+      
+      <div class="row g-1">
+        <div class="col-12 border bg-light">
+          <div class="p-2" align="center">
+            <span>BIO : </span> <span id="user_bio"></span> <br>
+            <span>Gender : </span> <span id="User_Gender"></span> <br> 
+            <span>Email : </span> <span id="User_Email"></span> <br> <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+    <!-- importing the JS cookie CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</html>
+<script src="./static_profile.js"></script>

@@ -1,0 +1,13 @@
+#links_holder
+{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    padding-left: 20px;
+    right: 2%;
+    top: 2%;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.667);
+    border: 2px solid black;
+}
+
