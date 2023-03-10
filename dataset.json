@@ -1,0 +1,44 @@
+[
+    {
+        "Name": "Mr Raju",
+        "Contact": 9450188585,
+        "Intake": [
+            {
+                "crop": "wheat",
+                "price_per_kg": 120
+            },
+            {
+                "crop": "sugarcane",
+                "price_per_kg": 200
+            },
+            {   
+                "crop": "potato",
+                "price_per_kg": 20
+            }
+        ],
+        "location": {
+            "x": 1232311.12,
+            "y": 454645.45
+        },
+        "rating": 3.2
+    },
+    {
+        "Name": "Mr Rohit",
+        "Contact": 9452388585,
+        "Intake": [
+            {
+                "crop": "rice",
+                "price_per_kg": 50
+            },
+            {
+                "crop": "sugarcane",
+                "price_per_kg": 190
+            }
+        ],
+        "location": {
+            "x": 122311.12,
+            "y": 5546345.45
+        },
+        "rating": 3.6
+    }
+]

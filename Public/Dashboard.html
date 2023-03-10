@@ -17,7 +17,13 @@
     <div id="Load_overlay" hidden>
         <img src="GUI_Resources/Loading.gif" id="loading_img">
     </div>
-        
+    <div id="farmer_input_div" align="center"> 
+        <span>location Captured : </span> <span id="latitude"></span> <span id="longitude"></span> <br><br>
+        <form onsubmit="submit_details();false">
+           <span>Cost per Unit</span> <input type="number"> <br><br>
+           <input type="submit">
+        </form>
+    </div>
 </body>
 </html>
 <!-- importing the JS cookie CDN -->

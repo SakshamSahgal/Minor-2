@@ -11,3 +11,13 @@
     border: 2px solid black;
 }
 
+#farmer_input_div
+{
+    width: 500px;
+    height: 200px;
+    padding-top: 2%;
+    background-color: rgba(240, 255, 255, 0.413);
+    position: absolute;
+    top: 40%;
+    left: 35%;
+}
