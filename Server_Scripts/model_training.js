@@ -1,21 +1,37 @@
-// Preprocess the JSON data
-const jsonData =  require("../Dataset_Training/dataset.json");
+const fs = require('fs');
+const regression = require('ml-regression');
 
-// console.log(jsonData)
-  
-const numericalData = jsonData.map(entry => { //converting dataset to numerical value
-    const name = entry.Name;
-    const contact = entry.Contact;
-    const crops = [];
-    const prices = [];
-    entry.Intake.forEach(intake => {
-      crops.push(intake.crop);
-      prices.push(intake.price_per_kg);
-    });
-    const x = entry.location.x;
-    const y = entry.location.y;
-    const rating = entry.rating;
-    console.log([name, contact, ...crops, ...prices, x, y, rating])
-    return [name, contact, ...crops, ...prices, x, y, rating];
-  });
-  
+
+// Read the dataset from file
+
+function trainData(){
+
+  // Load the dataset from the JSON file
+  const data = JSON.parse(fs.readFileSync("./Dataset_Training/dataset_for_price_prediction.json"));
+
+  // Select the crop and the year for prediction
+  const cropType = 'Wheat';
+  const year = 2022;
+
+  // Extract the data for the selected crop
+  const cropData = data[cropType];
+
+  // Split the data into features (years) and targets (prices)
+  const features = cropData.map(item => item.year);
+  const targets = cropData.map(item => item.price);
+
+  // Train the polynomial regression model with degree 2
+  const degree = 2;
+  const model = new regression.PolynomialRegression(features, targets, degree);
+
+  // Predict the crop price for the provided year
+  const predictedPrice = model.predict(year);
+
+  console.log(`The predicted price for ${cropType} in ${year} is: ${predictedPrice}`);
+
+}
+
+
+
+
+module.exports = {trainData};
