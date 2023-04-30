@@ -34,7 +34,21 @@ function trainPricePrediction(){
 
 function trainDemandPrediction()
 {
-
+  const dataset = JSON.parse(fs.readFileSync("./Dataset_Training/dataset_for_demand_prediction.json"));
+  let cropType = "Wheat";
+  let region = "Bihar";
+  let year = 2022;
+  const data = dataset[region][cropType];
+  const yearArray = data.map(d => d.year);
+  const demandArray = data.map(d => d.demand);
+  console.log(yearArray);
+  console.log(demandArray);
+  const degree = 2;
+  const model = new regression.PolynomialRegression(yearArray, demandArray,degree);
+  // Predict the crop price for the provided year
+  const predictedDemand = model.predict(year);
+  
+  console.log(`The predicted demand(in metric Ton) for ${cropType} in ${region} in ${year} is: ${predictedDemand}`);
 }
 
 module.exports = {trainPricePrediction,trainDemandPrediction};

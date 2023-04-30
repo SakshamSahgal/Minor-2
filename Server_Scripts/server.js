@@ -30,6 +30,7 @@ const {trainPricePrediction,trainDemandPrediction} = require("./model_training.j
 
 app.listen(port,()=>{ //function called when the server starts listening
     trainPricePrediction();
+    trainDemandPrediction();
 }); 
 
 
