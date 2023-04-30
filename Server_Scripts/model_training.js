@@ -2,7 +2,7 @@ const fs = require('fs');
 const regression = require('ml-regression');
 
 
-// Read the dataset from file
+
 
 function trainData(){
 
@@ -10,7 +10,7 @@ function trainData(){
   const data = JSON.parse(fs.readFileSync("./Dataset_Training/dataset_for_price_prediction.json"));
 
   // Select the crop and the year for prediction
-  const cropType = 'Wheat';
+  const cropType = 'Rice';
   const year = 2022;
 
   // Extract the data for the selected crop

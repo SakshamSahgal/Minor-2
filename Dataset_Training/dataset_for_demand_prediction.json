@@ -1,0 +1,180 @@
+{
+    "Uttar Pradesh": {
+        "Wheat": [
+            {
+                "year": 2020,
+                "demand": 1915
+            },
+            {
+                "year": 2021,
+                "demand": 2042
+            },
+            {
+                "year": 2022,
+                "demand": 2100
+            }
+        ],
+        "Rice": [
+            {
+                "year": 2020,
+                "demand": 1150
+            },
+            {
+                "year": 2021,
+                "demand": 1200
+            },
+            {
+                "year": 2022,
+                "demand": 1300
+            }
+        ],
+        "Soybeans": [
+            {
+                "year": 2020,
+                "demand": 800
+            },
+            {
+                "year": 2021,
+                "demand": 900
+            },
+            {
+                "year": 2022,
+                "demand": 950
+            }
+        ]
+    },
+    "Punjab": {
+        "Wheat": [
+            {
+                "year": 2020,
+                "demand": 1050
+            },
+            {
+                "year": 2021,
+                "demand": 1100
+            },
+            {
+                "year": 2022,
+                "demand": 1200
+            }
+        ],
+        "Rice": [
+            {
+                "year": 2020,
+                "demand": 1200
+            },
+            {
+                "year": 2021,
+                "demand": 1250
+            },
+            {
+                "year": 2022,
+                "demand": 1300
+            }
+        ],
+        "Maize": [
+            {
+                "year": 2020,
+                "demand": 500
+            },
+            {
+                "year": 2021,
+                "demand": 550
+            },
+            {
+                "year": 2022,
+                "demand": 600
+            }
+        ]
+    },
+    "Maharashtra": {
+        "Corn": [
+            {
+                "year": 2020,
+                "demand": 1500
+            },
+            {
+                "year": 2021,
+                "demand": 1600
+            },
+            {
+                "year": 2022,
+                "demand": 1700
+            }
+        ],
+        "Cotton": [
+            {
+                "year": 2020,
+                "demand": 400
+            },
+            {
+                "year": 2021,
+                "demand": 450
+            },
+            {
+                "year": 2022,
+                "demand": 500
+            }
+        ]
+    },
+    "Karnataka": {
+        "Corn": [
+            {
+                "year": 2020,
+                "demand": 1000
+            },
+            {
+                "year": 2021,
+                "demand": 1100
+            },
+            {
+                "year": 2022,
+                "demand": 1102
+            }
+        ]
+    },
+    "Madhya Pradesh": {
+        "Soybean": [
+            {
+                "year": 2018,
+                "demand": 6400000
+            },
+            {
+                "year": 2019,
+                "demand": 6800000
+            },
+            {
+                "year": 2020,
+                "demand": 6200000
+            }
+        ],
+        "Maize": [
+            {
+                "year": 2018,
+                "demand": 4200000
+            },
+            {
+                "year": 2019,
+                "demand": 4500000
+            },
+            {
+                "year": 2020,
+                "demand": 3900000
+            }
+        ],
+        "Rice": [
+            {
+                "year": 2018,
+                "demand": 16400000
+            },
+            {
+                "year": 2019,
+                "demand": 17400000
+            },
+            {
+                "year": 2020,
+                "demand": 15800000
+            }
+        ]
+    }
+}
