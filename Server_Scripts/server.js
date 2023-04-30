@@ -25,11 +25,11 @@ const {Delete_Account} = require("./Auth/Delete_Acc.js");
 const {Fetch_Static_Profile,Update_Bio,Update_Username,Update_Gender,Update_Password} = require("./Page_Queries/profile.js");
 const {Fetch_Dashboard} = require("./Page_Queries/Dashboard.js");
 const {Verify_Email,Forgot_Verify_OTP,Verify_Password} = require("./Auth/Forgot_Details.js");
-const {trainData} = require("./model_training.js")
+const {trainPricePrediction,trainDemandPrediction} = require("./model_training.js")
 
 
 app.listen(port,()=>{ //function called when the server starts listening
-    trainData();
+    trainPricePrediction();
 }); 
 
 

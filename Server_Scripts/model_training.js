@@ -4,7 +4,7 @@ const regression = require('ml-regression');
 
 
 
-function trainData(){
+function trainPricePrediction(){
 
   // Load the dataset from the JSON file
   const data = JSON.parse(fs.readFileSync("./Dataset_Training/dataset_for_price_prediction.json"));
@@ -32,6 +32,9 @@ function trainData(){
 }
 
 
+function trainDemandPrediction()
+{
 
+}
 
-module.exports = {trainData};
+module.exports = {trainPricePrediction,trainDemandPrediction};
