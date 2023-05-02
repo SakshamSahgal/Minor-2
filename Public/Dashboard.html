@@ -16,7 +16,7 @@
     <!-- local CSS -->
     <link rel="stylesheet" href="CSS/Common_CSS.css">
     <link rel="stylesheet" href="CSS/Dashboard.css">
-    
+    <!-- using chart JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <div id="links_holder">
@@ -28,15 +28,15 @@
     <div id="Load_overlay" hidden>
         <img src="GUI_Resources/Loading.gif" id="loading_img">
     </div>
-    <br><br><br><br>
-    <div class="container my-5">
+    <br><br>
+    <div class="container my-5" style="width: 50%;">
 
         <ul class="nav-tabs nav nav-justified bg-light">
             <li class="nav-item">
-            <a href="#id_1" class="nav-link active" data-bs-toggle="tab"> Predict Price </a>
+            <a href="#id_1" class="nav-link active" data-bs-toggle="tab" id="predictPriceTab"> Predict Price </a>
             </li>
             <li class="nav-item">
-            <a href="#id_2" class="nav-link" data-bs-toggle="tab"> Predict Demand </a>
+            <a href="#id_2" class="nav-link" data-bs-toggle="tab" id="predictDemandTab"> Predict Demand </a>
             </li>
         </ul>
     
@@ -132,7 +132,7 @@
                                     <td>
                                         <select class="form-select" aria-label="Default select example" style="width:auto;" id="cropTypeDemand">
                                             <option selected value="Wheat">Wheat</option>
-                                            <option value="Soybeans">Soybeans</option>
+                                            <option value="Soybean">Soybeans</option>
                                             <option value="Rice">Rice</option>
                                         </select>
                                     </td>

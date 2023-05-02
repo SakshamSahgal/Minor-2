@@ -113,36 +113,58 @@ function PredictDemand()
 
 
 
-document.getElementById("Region").addEventListener("change",()=>{ //function called when value of region dropdown in demand prediction changes
-    
+
+document.getElementById("cropTypeDemand").addEventListener("change",()=>{ //event listener called when crop type dropdown of demand is changed
+    updateDemandGraph()
 })
 
-document.getElementById("cropType").addEventListener("change",(req,res) => {
-    fetch("../Dataset_Training/dataset_for_price_prediction.json").then(data => data.json()).then(dataset => {
-        console.log(dataset)
-        let selected = {
-            cropType : document.getElementById("cropType").value,
-            year : parseInt(document.getElementById("yearInput").value)
-        }
-        const yearArray = dataset[selected.cropType].map(item => item.year);
-        const priceArray = dataset[selected.cropType].map(item => item.price);
-        displayGraph(yearArray,priceArray,"PriceChart","Price Per Kg");
-    })
+document.getElementById("Region").addEventListener("change",()=>{ //event called when value of region dropdown in demand prediction changes
+   updateDemandGraph()
+})
+
+document.getElementById("cropType").addEventListener("change",(req,res) => { //event called when user changes crop type in price prediction
+   updatePriceGraph()
 })
 
 document.addEventListener("DOMContentLoaded", function(event) {  //function called when page loads 
+   updatePriceGraph()
+});
+
+document.getElementById("predictDemandTab").addEventListener("click",()=>{
+    updateDemandGraph()
+})
+
+document.getElementById("predictPriceTab").addEventListener("click",()=>{
+   updatePriceGraph()
+})
+
+function updateDemandGraph()
+{
+    fetch("../Dataset_Training/dataset_for_demand_prediction.json").then(data => data.json()).then(dataset => { //fetching the price prediction dataset and applying on PriceChart
+        let selected = {
+            cropType : document.getElementById("cropTypeDemand").value,
+            region : document.getElementById("Region").value,
+        }
+        console.log(dataset[selected.region][selected.cropType])
+        const yearArray = dataset[selected.region][selected.cropType].map(item => item.year);
+        const demandArray = dataset[selected.region][selected.cropType].map(item => item.demand);
+        displayGraph(yearArray,demandArray,"DemandChart","Metric Ton");
+    })
+}
+
+function updatePriceGraph()
+{
     fetch("../Dataset_Training/dataset_for_price_prediction.json").then(data => data.json()).then(dataset => {
-        console.log(dataset)
         let selected = {
             cropType : document.getElementById("cropType").value,
             year : parseInt(document.getElementById("yearInput").value)
         }
+        console.log(dataset[selected.cropType])
         const yearArray = dataset[selected.cropType].map(item => item.year);
         const priceArray = dataset[selected.cropType].map(item => item.price);
         displayGraph(yearArray,priceArray,"PriceChart","Price Per Kg");
     })
-});
-
+}
 
 function displayGraph(arrayX,arrayY,chartID,Label)
 {
