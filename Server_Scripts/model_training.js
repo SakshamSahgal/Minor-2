@@ -4,14 +4,14 @@ const regression = require('ml-regression');
 
 
 
-function trainPricePrediction(){
+function trainPricePrediction(req,res){
 
   // Load the dataset from the JSON file
-  const data = JSON.parse(fs.readFileSync("./Dataset_Training/dataset_for_price_prediction.json"));
+  const data = JSON.parse(fs.readFileSync("./Public/Dataset_Training/dataset_for_price_prediction.json"));
 
   // Select the crop and the year for prediction
-  const cropType = 'Rice';
-  const year = 2022;
+  const cropType = req.body.cropType;
+  const year = req.body.year;
 
   // Extract the data for the selected crop
   const cropData = data[cropType];
@@ -28,13 +28,16 @@ function trainPricePrediction(){
   const predictedPrice = model.predict(year);
 
   console.log(`The predicted price for ${cropType} in ${year} is: ${predictedPrice}`);
-
+  let PredictedJSON = {
+    price : predictedPrice
+  }
+  res.json(PredictedJSON)
 }
 
 
 function trainDemandPrediction()
 {
-  const dataset = JSON.parse(fs.readFileSync("./Dataset_Training/dataset_for_demand_prediction.json"));
+  const dataset = JSON.parse(fs.readFileSync("./Public/Dataset_Training/dataset_for_demand_prediction.json"));
   let cropType = "Wheat";
   let region = "Bihar";
   let year = 2022;

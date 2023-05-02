@@ -29,10 +29,13 @@ const {trainPricePrediction,trainDemandPrediction} = require("./model_training.j
 
 
 app.listen(port,()=>{ //function called when the server starts listening
-    trainPricePrediction();
-    trainDemandPrediction();
+    // trainPricePrediction();
+    // trainDemandPrediction();
 }); 
 
+app.post("/getPricePrediction",(req,res) => {
+    trainPricePrediction(req,res);
+})
 
 app.get("/get_User_DB",(req,res)=>{ //only for debugging
     Return_Users_DB(res);
