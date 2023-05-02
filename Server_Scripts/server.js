@@ -37,6 +37,10 @@ app.post("/getPricePrediction",(req,res) => {
     trainPricePrediction(req,res);
 })
 
+app.post("/getDemandPrediction",(req,res) => {
+    trainDemandPrediction(req,res);
+})
+
 app.get("/get_User_DB",(req,res)=>{ //only for debugging
     Return_Users_DB(res);
 })

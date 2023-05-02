@@ -1,5 +1,4 @@
 let loadOverlay = document.getElementById("Load_overlay");
-JSONEditor.defaults.editors.object.options.collapsed = true;
 
 async function SendToServer(JSON_to_Send,Route)
 {
@@ -79,46 +78,34 @@ function getPricePrediction()
         loadOverlay.hidden = false;
         SendToServer(Session,"/getPricePrediction").then( (response)=> {
             console.log(response);
-            alert(response.price)
+            alert(response.price + " price per kg")
             loadOverlay.hidden = true;
         })
     } 
 }
 
-function viewPredictPriceDataset()
+function PredictDemand()
 {
-    //fetching the dataset
-    fetch("../Dataset_Training/dataset_for_price_prediction.json").then(response => response.json()).then(data =>{
-        console.log(data);
-
-            var container = document.getElementById('json-editor');
-            var editor = new JSONEditor(container, {
-                mode: 'view',
-                search: false,
-                indentation: 4,
-                theme: 'bootstrap5', // or any other theme you prefer
-                schema: {
-                    type: 'object',
-                    title: 'View Generated Database',
-                    properties: {
-                    
-                    }
-                },
-                iconlib: 'fontawesome4',
-                startval: data,
-                disable_array_reorder : true,
-                compact : true,
-                remove_button_labels : true,
-                disable_properties : true,
-                disable_array_delete : true,
-                disable_edit_json : true,
-                startCollapsed: true,
-            });
-            
-
-    })
+    let Session = {
+        Session_ID : Cookies.get("Session_ID"),
+        cropType : document.getElementById("cropTypeDemand").value,
+        region : document.getElementById("Region").value,
+        year : parseInt(document.getElementById("yearInputDemand").value)
+    }
+    if(Session.Session_ID == undefined) //accesing via link
+        location.href = "./index.html";
+    else
+    {
+        console.log(Session);
+        loadOverlay.hidden = false;
+        SendToServer(Session,"/getDemandPrediction").then( (response)=> {
+            console.log(response);
+            alert(response.Demand + " Metric Ton")
+            loadOverlay.hidden = true;
+        })
+    } 
 }
+
 
 Fetch_Dashboard();
 
-viewPredictPriceDataset();

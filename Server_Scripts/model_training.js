@@ -35,12 +35,12 @@ function trainPricePrediction(req,res){
 }
 
 
-function trainDemandPrediction()
+function trainDemandPrediction(req,res)
 {
   const dataset = JSON.parse(fs.readFileSync("./Public/Dataset_Training/dataset_for_demand_prediction.json"));
-  let cropType = "Wheat";
-  let region = "Bihar";
-  let year = 2022;
+  let cropType = req.body.cropType;
+  let region = req.body.region;
+  let year = req.body.year;
   const data = dataset[region][cropType];
   const yearArray = data.map(d => d.year);
   const demandArray = data.map(d => d.demand);
@@ -52,6 +52,11 @@ function trainDemandPrediction()
   const predictedDemand = model.predict(year);
   
   console.log(`The predicted demand(in metric Ton) for ${cropType} in ${region} in ${year} is: ${predictedDemand}`);
+  let PredictedJSON = {
+    Demand : predictedDemand
+  }
+  res.json(PredictedJSON)
+
 }
 
 module.exports = {trainPricePrediction,trainDemandPrediction};

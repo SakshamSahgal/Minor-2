@@ -13,12 +13,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- json editor library -->
-    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
-    <link rel="stylesheet" href="CSS/jsoneditor.css">
-    <!-- using font-awesome icon library -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
     <link rel="stylesheet" href="CSS/Common_CSS.css">
     <link rel="stylesheet" href="CSS/Dashboard.css">
@@ -31,7 +25,7 @@
     <div id="Load_overlay" hidden>
         <img src="GUI_Resources/Loading.gif" id="loading_img">
     </div>
-
+    <br><br><br><br>
     <div class="container my-5">
 
         <ul class="nav-tabs nav nav-justified bg-light">
@@ -44,10 +38,10 @@
         </ul>
     
     
-        <div class="tab-content">
+        <div class="tab-content" style="background-color: white;">
     
             <div class="tab-pane show active" id="id_1">
-               <div style="background-color: white;">
+               <div>
                 <form onsubmit="getPricePrediction();return false">
                     <div class="container">
                         <div class="row py-3" align="center">
@@ -60,9 +54,9 @@
                                     </td>
                                     <td>
                                         <select class="form-select" aria-label="Default select example" style="width:auto;" id="cropType">
-                                            <option selected>Wheat</option>
-                                            <option value="1">Soybeans</option>
-                                            <option value="2">Rice</option>
+                                            <option selected value="Wheat">Wheat</option>
+                                            <option value="Soybeans">Soybeans</option>
+                                            <option value="Rice">Rice</option>
                                         </select>
                                     </td>
                                 </table>
@@ -70,16 +64,15 @@
                         </div>
                         <div class="row py-3" align="center">
                             <div class="col py-3">
-                            
                                 <table>
                                     <td> Year To Predict :  &nbsp; &nbsp; </td>
-                                    <td> <input type="number" id="yearInput" placeholder="2023"> </td>
+                                    <td> <input type="number" id="yearInput" placeholder="2023" required> </td>
                                 </table>
 
                             </div>
                             <br><br><br><br>
                             <input type="submit">
-                            <div id="json-editor"></div>
+                            <a id="predictPriceDatasetDiv" href="./Dataset_Training/dataset_for_price_prediction.json" target="_blank">View Generated Training Dataset for Price Prediction </a>
                         </div>
 
                     </div>
@@ -89,13 +82,74 @@
             </div>
            
             <div class="tab-pane fade" id="id_2">
-                <select class="form-select" aria-label="Default select example" style="width:auto;" >
-                    <option selected>Uttar Pradesh</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
                 
+                <div class="container">
+                    <div class="row py-3" align="center">
+                        <div class="col py-3">
+                            <form onsubmit="PredictDemand();return false">
+                                <table>
+
+                                    <tr><td>Region : &nbsp;&nbsp; </td> 
+                                        <td>
+                                            <select class="form-select" id="Region" aria-label="Default select example" style="width:auto;" >
+                                                <option selected>Uttar Pradesh</option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Odisha">Odisha</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Telangana">Telangana</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="Uttarakhand">Uttarakhand</option>
+                                                <option value="West Bengal">West Bengal</option>
+                                            </select>
+                                        </td>
+                                </tr>
+                                <tr>
+                                    <td>Crop Type : &nbsp; &nbsp;</td>
+                                    <td>
+                                        <select class="form-select" aria-label="Default select example" style="width:auto;" id="cropTypeDemand">
+                                            <option selected value="Wheat">Wheat</option>
+                                            <option value="Soybeans">Soybeans</option>
+                                            <option value="Rice">Rice</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> Year To Predict : &nbsp; &nbsp; </td>
+                                    <td>
+                                        <input type="number" placeholder="2023" id="yearInputDemand" required> 
+                                    </td>
+                                    
+                                </tr>
+                                </table>
+                                <input type="submit">
+                            </form>
+                            <a id="predictDemandDatasetDiv" href="./Dataset_Training/dataset_for_demand_prediction.json" target="_blank"> View Generated Training Dataset for Demand Prediction </a>
+                        </div>
+                    </div>
+                </div>
+                
+
             </div>
     
         </div>
