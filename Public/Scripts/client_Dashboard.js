@@ -1,3 +1,5 @@
+
+let chart = null;
 let loadOverlay = document.getElementById("Load_overlay");
 
 async function SendToServer(JSON_to_Send,Route)
@@ -63,6 +65,9 @@ function Fetch_Dashboard() //function called at the page load [fetches dashboard
 }
 
 
+
+
+
 function getPricePrediction()
 {
     let Session = {
@@ -104,6 +109,70 @@ function PredictDemand()
             loadOverlay.hidden = true;
         })
     } 
+}
+
+
+
+document.getElementById("Region").addEventListener("change",()=>{ //function called when value of region dropdown in demand prediction changes
+    
+})
+
+document.getElementById("cropType").addEventListener("change",(req,res) => {
+    fetch("../Dataset_Training/dataset_for_price_prediction.json").then(data => data.json()).then(dataset => {
+        console.log(dataset)
+        let selected = {
+            cropType : document.getElementById("cropType").value,
+            year : parseInt(document.getElementById("yearInput").value)
+        }
+        const yearArray = dataset[selected.cropType].map(item => item.year);
+        const priceArray = dataset[selected.cropType].map(item => item.price);
+        displayGraph(yearArray,priceArray,"PriceChart","Price Per Kg");
+    })
+})
+
+document.addEventListener("DOMContentLoaded", function(event) {  //function called when page loads 
+    fetch("../Dataset_Training/dataset_for_price_prediction.json").then(data => data.json()).then(dataset => {
+        console.log(dataset)
+        let selected = {
+            cropType : document.getElementById("cropType").value,
+            year : parseInt(document.getElementById("yearInput").value)
+        }
+        const yearArray = dataset[selected.cropType].map(item => item.year);
+        const priceArray = dataset[selected.cropType].map(item => item.price);
+        displayGraph(yearArray,priceArray,"PriceChart","Price Per Kg");
+    })
+});
+
+
+function displayGraph(arrayX,arrayY,chartID,Label)
+{
+    (document.getElementById(chartID).innerHTML = "")
+    var ctx = document.getElementById(chartID).getContext('2d');
+    if (chart) {
+        chart.destroy();
+      }
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: arrayX,
+            datasets: [{
+                label: Label,
+                data: arrayY,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false,
+                    }
+                }]
+            }
+        }
+    });
 }
 
 
