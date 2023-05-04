@@ -25,7 +25,7 @@ const {Delete_Account} = require("./Auth/Delete_Acc.js");
 const {Fetch_Static_Profile,Update_Bio,Update_Username,Update_Gender,Update_Password} = require("./Page_Queries/profile.js");
 const {Fetch_Dashboard} = require("./Page_Queries/Dashboard.js");
 const {Verify_Email,Forgot_Verify_OTP,Verify_Password} = require("./Auth/Forgot_Details.js");
-const {trainPricePrediction,trainDemandPrediction} = require("./model_training.js")
+const {trainPricePrediction,trainDemandPrediction,RNN} = require("./model_training.js")
 
 
 app.listen(port,()=>{ //function called when the server starts listening
@@ -34,11 +34,17 @@ app.listen(port,()=>{ //function called when the server starts listening
 }); 
 
 app.post("/getPricePrediction",(req,res) => {
-    trainPricePrediction(req,res);
+    if(req.body.model == "polynomialRegression")
+        trainPricePrediction(req,res); //price prediction using Regression
+    else
+        RNN(req,res,"price"); //price prediction using RNN
 })
 
 app.post("/getDemandPrediction",(req,res) => {
-    trainDemandPrediction(req,res);
+    if(req.body.model == "polynomialRegression")
+        trainDemandPrediction(req,res);
+    else
+        RNN(req,res,"demand");
 })
 
 app.get("/get_User_DB",(req,res)=>{ //only for debugging

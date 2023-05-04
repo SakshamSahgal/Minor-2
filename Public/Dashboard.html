@@ -67,13 +67,37 @@
                         <div class="row py-1" align="center">
                             <div class="col py-1">
                                 <table>
-                                    <td> Year To Predict :  &nbsp; &nbsp; </td>
-                                    <td> <input type="number" id="yearInput" placeholder="2023" required> </td>
-                                </table>
+                                    <tr>
+                                        <td> Year To Predict :  &nbsp; &nbsp; </td>
+                                        <td> <input type="number" id="yearInput" placeholder="2023" required> </td>
+                                    </tr>
+                                    <tr>
+                                        <br>
+                                        <td><p>Model To Use : &nbsp; &nbsp;</p></td>
+                                        <td>
+                                            <div class="form-check">
+                                                <br>
+                                                <input class="form-check-input" type="radio" name="modelRadioPrice" id="polynomialRegression" value="polynomialRegression" checked>
+                                                <label class="form-check-label" for="polynomialRegression">
+                                                2nd Degree Polynomial Regression
+                                                </label>
+                                            </div>
+                                            <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="modelRadioPrice" id="rnn" value="rnn">
+                                                <label class="form-check-label" for="rnn">
+                                                    Recurrent Neural network (RNN)
+                                                </label>
+                                            </div>
+                                        </td>
 
+                                        
+                                    </tr>
+                                </table>
+                                <br><br>
                             </div>
-                            <br><br><br><br>
                             <input type="submit">
+                            <br>
                             <a id="predictPriceDatasetDiv" href="./Dataset_Training/dataset_for_price_prediction.json" target="_blank">View Generated Training Dataset for Price Prediction </a>
                             <canvas id="PriceChart"></canvas>
                         </div>
@@ -86,12 +110,11 @@
            
             <div class="tab-pane fade" id="id_2">
                 
-                <div class="container">
+                <div class="container" align="center">
                     <div class="row py-3" align="center">
                         <div class="col py-3">
                             <form onsubmit="PredictDemand();return false">
                                 <table>
-
                                     <tr><td>Region : &nbsp;&nbsp; </td> 
                                         <td>
                                             <select class="form-select" id="Region" aria-label="Default select example" style="width:auto;" >
@@ -126,25 +149,48 @@
                                                 <option value="West Bengal">West Bengal</option>
                                             </select>
                                         </td>
-                                </tr>
-                                <tr>
-                                    <td>Crop Type : &nbsp; &nbsp;</td>
-                                    <td>
-                                        <select class="form-select" aria-label="Default select example" style="width:auto;" id="cropTypeDemand">
-                                            <option selected value="Wheat">Wheat</option>
-                                            <option value="Soybean">Soybeans</option>
-                                            <option value="Rice">Rice</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> Year To Predict : &nbsp; &nbsp; </td>
-                                    <td>
-                                        <input type="number" placeholder="2023" id="yearInputDemand" required> 
-                                    </td>
-                                    
-                                </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>Crop Type : &nbsp; &nbsp;</td>
+                                        <td>
+                                            <select class="form-select" aria-label="Default select example" style="width:auto;" id="cropTypeDemand">
+                                                <option selected value="Wheat">Wheat</option>
+                                                <option value="Soybean">Soybeans</option>
+                                                <option value="Rice">Rice</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <br><br>
+                                        <td> Year To Predict : &nbsp; &nbsp; </td>
+                                        <td>
+                                            <input type="number" placeholder="2023" id="yearInputDemand" required> 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>Model To Use : &nbsp; &nbsp;</p>
+                                        </td>
+                                        <td>
+                                            <div class="form-check">
+                                                <br>
+                                                <input class="form-check-input" type="radio" name="modelRadioDemand" id="polynomialRegression" value="polynomialRegression" checked>
+                                                <label class="form-check-label" for="polynomialRegression">
+                                                2nd Degree Polynomial Regression
+                                                </label>
+                                            </div>
+                                            <br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="modelRadioDemand" id="rnn" value="rnn">
+                                                <label class="form-check-label" for="rnn">
+                                                    Recurrent Neural network (RNN)
+                                                </label>
+                                                
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </table>
+                                <br><br>
                                 <input type="submit">
                             </form>
                             <a id="predictDemandDatasetDiv" href="./Dataset_Training/dataset_for_demand_prediction.json" target="_blank"> View Generated Training Dataset for Demand Prediction </a>

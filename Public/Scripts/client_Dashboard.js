@@ -73,8 +73,10 @@ function getPricePrediction()
     let Session = {
         Session_ID : Cookies.get("Session_ID"),
         cropType : document.getElementById("cropType").value,
-        year : parseInt(document.getElementById("yearInput").value)
+        year : parseInt(document.getElementById("yearInput").value),
+        model : (document.getElementsByName('modelRadioPrice')[0].checked) ? "polynomialRegression" : "RNN"
     }
+
     if(Session.Session_ID == undefined) //accesing via link
         location.href = "./index.html";
     else
@@ -95,7 +97,8 @@ function PredictDemand()
         Session_ID : Cookies.get("Session_ID"),
         cropType : document.getElementById("cropTypeDemand").value,
         region : document.getElementById("Region").value,
-        year : parseInt(document.getElementById("yearInputDemand").value)
+        year : parseInt(document.getElementById("yearInputDemand").value),
+        model : (document.getElementsByName('modelRadioDemand')[0].checked) ? "polynomialRegression" : "RNN"
     }
     if(Session.Session_ID == undefined) //accesing via link
         location.href = "./index.html";
