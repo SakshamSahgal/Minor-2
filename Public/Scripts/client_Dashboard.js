@@ -81,13 +81,18 @@ function getPricePrediction()
         location.href = "./index.html";
     else
     {
-        console.log(Session);
-        loadOverlay.hidden = false;
-        SendToServer(Session,"/getPricePrediction").then( (response)=> {
-            console.log(response);
-            alert(response.price + " price per kg")
-            loadOverlay.hidden = true;
-        })
+        if(Session.year >= 2017 && Session.year <= 2030)
+        {
+            console.log(Session);
+            loadOverlay.hidden = false;
+            SendToServer(Session,"/getPricePrediction").then( (response)=> {
+                console.log(response);
+                alert(response.price + " price per kg")
+                loadOverlay.hidden = true;
+            })
+        }
+        else
+            alert("Year should be between 2017 and 2030");
     } 
 }
 
@@ -104,13 +109,18 @@ function PredictDemand()
         location.href = "./index.html";
     else
     {
-        console.log(Session);
-        loadOverlay.hidden = false;
-        SendToServer(Session,"/getDemandPrediction").then( (response)=> {
-            console.log(response);
-            alert(response.Demand + " Metric Ton")
-            loadOverlay.hidden = true;
-        })
+        if(Session.year >= 2017 && Session.year <= 2030)
+        {
+            console.log(Session);
+            loadOverlay.hidden = false;
+            SendToServer(Session,"/getDemandPrediction").then( (response)=> {
+                console.log(response);
+                alert(response.Demand + " Metric Ton")
+                loadOverlay.hidden = true;
+            })
+        }
+        else
+            alert("Year should be between 2017 and 2030");
     } 
 }
 
