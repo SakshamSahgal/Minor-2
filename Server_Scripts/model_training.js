@@ -192,8 +192,8 @@ function RNN(req, res, toPredict) //toPredict = price or demand
       console.log(yearArray)
     }
 
-    console.log(`The predicted demand using RNN of ${Region} , ${inputCropType} for the year ${inputYear} is ${yearArray[yearArray.length - 1].price}.`);
-    res.json({ Demand: yearArray[yearArray.length - 1].price });
+    console.log(`The predicted demand using RNN of ${Region} , ${inputCropType} for the year ${inputYear} is ${yearArray[yearArray.length - 1].demand}.`);
+    res.json({ Demand: yearArray[yearArray.length - 1].demand });
   }
 }
 
