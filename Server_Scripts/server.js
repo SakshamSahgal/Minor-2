@@ -35,7 +35,7 @@ app.listen(port, () => { //function called when the server starts listening
     // const dataset = JSON.parse(fs.readFileSync("./Public/Dataset_Training/dataset_for_demand_prediction.json"));
 
     // // Define the state and crop type to update
-    // const stateToUpdate = "West Bengal";
+    // const stateToUpdate = "Bihar";
     // const cropsToUpdate = ["Wheat", "Rice", "Soybean"];
 
     // // Define the percentage range to randomly change the demand values
